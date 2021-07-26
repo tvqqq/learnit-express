@@ -8,4 +8,7 @@ router.get("/", TopicController.index);
 router.get("/add", TopicController.add);
 router.post("/add", TopicController.create);
 
+router.get("/:_id", TopicController.edit);
+router.put("/:_id", TopicController.update);
+
 module.exports = router;

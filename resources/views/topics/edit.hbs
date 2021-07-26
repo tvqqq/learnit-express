@@ -1,0 +1,28 @@
+<a href="/topics" class="btn btn-outline-secondary" role="button">Back to list</a>
+
+<h1 class="mt-3">Edit Topic</h1>
+
+<form method="POST" action="/topics/{{topic._id}}?_method=PUT">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" value="{{topic.title}}" id="title" name="title" required>
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" id="description" name="description">{{topic.description}}</textarea>
+  </div>
+  <div class="mb-3">
+    <label for="url" class="form-label">URL</label>
+    <input type="text" class="form-control" value="{{topic.url}}" id="url" name="url">
+  </div>
+  <div class="mb-3">
+    <label for="url" class="form-label">Status</label>
+    <select class="form-select" aria-label="Default select example" name="status">
+      <option value="0" {{compare topic.status 0 ? "selected": ""}}>To learn</option>
+      <option value="1" {{compare topic.status 1 "selected": ""}}>Learning</option>
+      <option value="2" {{compare topic.status 2 ? "selected": ""}}>Learned</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-lg btn-primary">Update</button>
+</form>

@@ -16,11 +16,15 @@
     
     {{#each topics}}
     <tr>
-      <th scope="row">1</th>
+      <th scope="row">{{sum @index 1}}</th>
       <td>{{this.title}}</td>
       <td>{{this.status}}</td>
       <td>{{this.description}}</td>
       <td>{{this.url}}</td>
+      <td>
+        <a href="/topics/{{this._id}}" role="button" class="btn btn-warning">Edit</a>
+        <a href="#" role="button" class="btn btn-danger">Delete</a>
+      </td>
     </tr>
     {{/each}}
   </tbody>
