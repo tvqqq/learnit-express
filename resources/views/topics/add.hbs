@@ -1,0 +1,20 @@
+<a href="/topics" class="btn btn-outline-secondary" role="button">Back to list</a>
+
+<h1 class="mt-3">Add Topic</h1>
+
+<form method="POST" action="/topics/add">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title" name="title" required>
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" id="description" name="description"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="url" class="form-label">URL</label>
+    <input type="text" class="form-control" id="url" name="url">
+  </div>
+
+  <button type="submit" class="btn btn-lg btn-primary">Create</button>
+</form>
