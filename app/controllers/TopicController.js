@@ -47,6 +47,14 @@ class TopicController {
       .catch(next);
   }
 
+  // [DELETE] /topics/:id
+  delete(req, res, next) {
+    Topic.deleteOne({ _id: req.params._id })
+      .then(() => {
+        res.redirect("/topics");
+      })
+      .catch(next);
+  }
 }
 
 module.exports = new TopicController();

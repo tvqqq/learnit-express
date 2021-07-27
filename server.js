@@ -3,8 +3,12 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// flash
+const flash = require("express-flash");
+app.use(flash());
 
 // override with POST having ?_method=DELETE
 const methodOverride = require("method-override");
@@ -27,12 +31,34 @@ app.set("views", path.join(__dirname, "resources", "views"));
 const database = require("./config/database");
 database.connect();
 
+// passport local
+const passportConfig = require("./config/passport");
+passportConfig.initPassport();
+
+// session
+const session = require("express-session");
+app.use(
+  session({
+    secret: "learnitsecret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+const passport = require("passport");
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(function (req, res, next) {
+  res.locals.session = req.session;
+  next();
+});
+
 // route
 const route = require("./routes");
 route(app);
 
 // setup public folder
-app.use(express.static("./public"));
+app.use(express.static("public"));
 
 // listen
 app.listen(port, () => {

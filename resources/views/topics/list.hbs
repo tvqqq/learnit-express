@@ -7,9 +7,9 @@
       <th scope="col">#</th>
       <th scope="col">Title</th>
       <th scope="col">Status</th>
-      <th scope="col">Description</th>
-      <th scope="col">URL</th>
-      <th scope="col"></th>
+      <th scope="col" width="35%">Description</th>
+      <th scope="col" width="15%">URL</th>
+      <th scope="col" width="10%">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -18,12 +18,14 @@
     <tr>
       <th scope="row">{{sum @index 1}}</th>
       <td>{{this.title}}</td>
-      <td>{{this.status}}</td>
+      <td><span class="badge bg-{{statusColor this.status}}">{{statusText this.status}}</span></td>
       <td>{{this.description}}</td>
-      <td>{{this.url}}</td>
+      <td><a href="{{this.url}}">{{this.url}}</a></td>
       <td>
-        <a href="/topics/{{this._id}}" role="button" class="btn btn-warning">Edit</a>
-        <a href="#" role="button" class="btn btn-danger">Delete</a>
+        <a href="/topics/{{this._id}}" role="button" class="btn btn-sm btn-warning">Edit</a>
+        <form method="POST" action="/topics/{{this._id}}?_method=DELETE" class="d-inline">
+          <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+        </form>
       </td>
     </tr>
     {{/each}}

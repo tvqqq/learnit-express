@@ -18,9 +18,9 @@
   <div class="mb-3">
     <label for="url" class="form-label">Status</label>
     <select class="form-select" aria-label="Default select example" name="status">
-      <option value="0" {{compare topic.status 0 ? "selected": ""}}>To learn</option>
-      <option value="1" {{compare topic.status 1 "selected": ""}}>Learning</option>
-      <option value="2" {{compare topic.status 2 ? "selected": ""}}>Learned</option>
+      <option value="0" {{compareSelected topic.status 0}}>{{statusText 0}}</option>
+      <option value="1" {{compareSelected topic.status 1}}>{{statusText 1}}</option>
+      <option value="2" {{compareSelected topic.status 2}}>{{statusText 2}}</option>
     </select>
   </div>
 
