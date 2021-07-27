@@ -26,7 +26,7 @@ class TopicController {
       status: 0,
     };
     Topic.create(data);
-    res.redirect("/topics/list");
+    res.redirect("/topics");
   }
 
   // [GET] /topics/:_id
